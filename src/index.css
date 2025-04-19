@@ -36,44 +36,36 @@
   }
 }
 
-@font-face {
-  font-family: 'HorrorFont';
-  src: url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
-  font-weight: normal;
-  font-style: normal;
-}
-
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-black text-horror-blood font-['HorrorFont'];
+    @apply bg-black text-horror-blood;
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' style='fill:rgb(138,3,3);'><circle cx='8' cy='8' r='8'/></svg>"), auto;
   }
 
   .horror-text {
-    font-family: 'HorrorFont', cursive;
     @apply text-horror-blood animate-flicker;
   }
   
   .horror-image {
-    filter: grayscale(20%) contrast(150%) hue-rotate(320deg);
+    image-rendering: pixelated;
+    filter: grayscale(10%) contrast(150%) brightness(0.7) sepia(50%) hue-rotate(320deg);
     transition: all 0.3s ease;
   }
 
   .horror-image:hover {
-    filter: grayscale(10%) contrast(180%) hue-rotate(340deg) brightness(0.9);
+    filter: grayscale(0%) contrast(180%) brightness(0.8) sepia(70%) hue-rotate(340deg);
   }
 
   .horror-symbols {
     @apply text-horror-crimson animate-glitch;
     letter-spacing: 0.2em;
-    font-family: 'HorrorFont', cursive;
   }
 
-  .game-canvas {
+  .pixelated {
     image-rendering: pixelated;
   }
 }
