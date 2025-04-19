@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import HorrorImage from "@/components/HorrorImage";
 import HorrorSymbols from "@/components/HorrorSymbols";
+import DrippingEffect from "@/components/DrippingEffect";
 import { playHissSound } from "@/assets/creepy-hiss";
+import { createDrippingSounds } from "@/assets/water-drip";
 
 // Количество пиксельных изображений для отображения
 const IMAGE_COUNT = 12;
@@ -18,6 +20,7 @@ const strangeSymbols = [
 export default function Index() {
   const [showSymbols, setShowSymbols] = useState(false);
   const [symbols, setSymbols] = useState<string[]>([]);
+  const [drippingSoundEffect, setDrippingSoundEffect] = useState<{start: () => void, stop: () => void} | null>(null);
 
   // Генерируем случайные странные символы
   useEffect(() => {
@@ -25,6 +28,23 @@ export default function Index() {
       .fill(0)
       .map(() => strangeSymbols[Math.floor(Math.random() * strangeSymbols.length)]);
     setSymbols(randomSymbols);
+    
+    // Создаем эффект бульканья и капания
+    const soundEffect = createDrippingSounds();
+    setDrippingSoundEffect(soundEffect);
+    
+    // Начинаем воспроизведение звуков после взаимодействия пользователя
+    const startSoundsOnInteraction = () => {
+      soundEffect.start();
+      document.removeEventListener('click', startSoundsOnInteraction);
+    };
+    
+    document.addEventListener('click', startSoundsOnInteraction);
+    
+    return () => {
+      soundEffect.stop();
+      document.removeEventListener('click', startSoundsOnInteraction);
+    };
   }, []);
 
   const handleImageClick = () => {
@@ -74,6 +94,9 @@ export default function Index() {
           </div>
         </div>
       </footer>
+
+      {/* Эффект капающей воды */}
+      <DrippingEffect />
 
       {/* Скример с символами */}
       <HorrorSymbols visible={showSymbols} count={200} />
