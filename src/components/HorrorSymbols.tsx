@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
 
+// Набор странных символов без эмоджи
 const symbols = [
-  '☠', '⚰', '⛧', '⛥', '⚱', '✝', '⚔', 
-  'ꙮ', '⸸', '⍟', '♰', '♱', '☦', '⁂',
-  '⛮', '⸹', '⤊', '⧌', '⧋', '⧊', '⍭'
+  '⸸', '⍟', '⸎', '⸰', '⸫', '⸙', '⸛', '⸞',
+  'ꙮ', '⍭', '⍔', '⍙', '⍚', '⍜', '⍡', '⍦',
+  '⧋', '⧊', '⧉', '⧈', '⧇', '⧅', '⧃', '⧂',
+  '⦿', '⧀', '⧁', '⦽', '⦼', '⦻', '⦹', '⦸',
+  '⌘', '⌑', '⍯', '⎔', '⎓', '⏣', '⏢', '⏥',
+  '⏧', '⌖', '⌬', '⌿', '⍀', '⍄', '⍅', '⍆',
+  '⍍', '⍎', '⍏', '⍐', '⍑', '⍒', '⍕', '⍖',
+  '⎊', '⎋', '⎌', '⍏', '⍖', '⍗', '⍘', '⍞',
+  '⨂', '⨁', '⨀', '⧆', '⧬', '⧫', '⦻', '⦿',
+  '⋈', '⋉', '⋊', '⋋', '⋌', '⋍', '⋎', '⋏',
+  '⊍', '⊎', '⊏', '⊐', '⊑', '⊒', '⊓', '⊔',
+  '⊕', '⊖', '⊗', '⊘', '⊙', '⊚', '⊛', '⊜'
 ];
 
 type HorrorSymbolsProps = {
@@ -11,7 +21,7 @@ type HorrorSymbolsProps = {
   count?: number;
 };
 
-export default function HorrorSymbols({ visible, count = 100 }: HorrorSymbolsProps) {
+export default function HorrorSymbols({ visible, count = 150 }: HorrorSymbolsProps) {
   const [randomSymbols, setRandomSymbols] = useState<Array<{symbol: string, x: number, y: number, size: number, rotation: number, opacity: number, delay: number}>>([]);
 
   useEffect(() => {
