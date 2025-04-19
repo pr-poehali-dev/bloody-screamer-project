@@ -66,6 +66,7 @@ export default {
 					blood: '#8a0303',
 					dark: '#0a0000',
 					crimson: '#dc143c',
+					pale: '#dadada'
 				}
 			},
 			borderRadius: {
@@ -104,6 +105,12 @@ export default {
 					'25%': { transform: 'translate(5px, -5px)' },
 					'50%': { transform: 'translate(-5px, 5px)' },
 					'75%': { transform: 'translate(5px, 5px)' }
+				},
+				'drip': {
+					'0%': { top: '-5%', opacity: '0.7', height: '0' },
+					'10%': { opacity: '0.8', height: 'calc(3px * var(--size))' },
+					'90%': { opacity: '0.9' },
+					'100%': { top: '105%', opacity: '0' }
 				}
 			},
 			animation: {
@@ -111,7 +118,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'flicker': 'flicker 0.5s infinite',
 				'shake': 'shake 0.5s infinite',
-				'glitch': 'glitch 0.3s infinite'
+				'glitch': 'glitch 0.3s infinite',
+				'drip': 'drip 8s linear forwards'
 			}
 		}
 	},

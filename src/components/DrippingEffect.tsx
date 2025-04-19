@@ -63,7 +63,7 @@ export default function DrippingEffect() {
       {drips.map((drip) => (
         <div
           key={drip.id}
-          className="absolute w-1 bg-horror-blood rounded-full opacity-70"
+          className="absolute bg-horror-blood rounded-full opacity-70"
           style={{
             left: `${drip.x}%`,
             top: `${drip.y}%`,
@@ -71,7 +71,8 @@ export default function DrippingEffect() {
             height: `${drip.size * 3}px`,
             animationDelay: `${drip.delay}s`,
             animation: `drip ${drip.duration}s linear forwards`,
-          }}
+            '--size': drip.size,
+          } as React.CSSProperties}
         />
       ))}
     </div>
