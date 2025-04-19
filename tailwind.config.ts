@@ -6,7 +6,7 @@ export default {
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -61,6 +61,11 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				horror: {
+					blood: '#8a0303',
+					dark: '#0a0000',
+					crimson: '#dc143c',
 				}
 			},
 			borderRadius: {
@@ -84,11 +89,29 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'flicker': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' }
+				},
+				'shake': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
+					'20%, 40%, 60%, 80%': { transform: 'translateX(5px)' }
+				},
+				'glitch': {
+					'0%, 100%': { transform: 'translate(0)' },
+					'25%': { transform: 'translate(5px, -5px)' },
+					'50%': { transform: 'translate(-5px, 5px)' },
+					'75%': { transform: 'translate(5px, 5px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'flicker': 'flicker 0.5s infinite',
+				'shake': 'shake 0.5s infinite',
+				'glitch': 'glitch 0.3s infinite'
 			}
 		}
 	},
